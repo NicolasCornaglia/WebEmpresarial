@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Sample{% endblock %}
+
+{% block content %}
+<section class="page-section about-heading">
+  <div class="container">
+    <div class="about-heading-content mbtm">
+      <div class="row">
+        <div class="col-xl-9 col-lg-10 mx-auto">
+          <div class="bg-faded rounded p-5 forced">
+            <h2 class="section-heading mb-4">
+              <span class="section-heading-lower">{{page.title}}</span>
+            </h2>
+            <div class="section-content">
+                <p>{{page.content|safe}}</p> <!-- Si o Si hay q agregar el template tag safe para que ckeditor funcione correctamente -->
+                {% if user.is_authenticated %}
+                  <p> <a href="{% url 'admin:pages_page_change' page.id%}">Editar</a></p> 
+                  <!-- aqui el url puede obtenerse utilizando la Plantilla -> 'admin:App_Model_Action' obj.id -->
+                {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+
+
+
+
